@@ -2,6 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+// Material UI
+import { Button } from '@mui/material'
+
 
 const Home: NextPage = () => {
   return (
@@ -15,8 +18,12 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1>my first next app</h1>
         <Link href='/posts/first-post' >
-          <a>got to first-post</a>
+          <a >got to first-post</a>
         </Link>
+
+        <Button variant='outlined' >
+          My Frist Button
+        </Button>
       </main>
     </div>
   )
