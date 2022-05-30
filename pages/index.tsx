@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1>my first next app</h1>
         <Link href='/posts/first-post' >
-          <a >got to first-post</a>
+          <a className={styles.link} >GO TO FIRST POST</a>
         </Link>
 
         <Button variant='outlined' >
