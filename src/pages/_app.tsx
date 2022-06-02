@@ -6,8 +6,12 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../src/theme';
-import createEmotionCache from '../src/createEmotionCache';
+import theme from '../theme';
+import createEmotionCache from '../createEmotionCache';
+
+// redux
+import { Provider } from 'react-redux';
+import { store } from '../app/store';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -19,7 +23,8 @@ interface MyAppProps extends AppProps {
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
-    <CacheProvider value={emotionCache}>
+    <Provider store={store}>
+      <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
@@ -29,5 +34,6 @@ export default function MyApp(props: MyAppProps) {
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
+    </Provider>
   );
 }

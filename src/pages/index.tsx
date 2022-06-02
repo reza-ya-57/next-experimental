@@ -1,12 +1,25 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 // Material UI
 import { Button } from '@mui/material'
-
+//Redux
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../app/hooks';
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from '../store/actions';
+import { selectCount } from '../store'
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch();
+  const count = useAppSelector(selectCount);
+  console.log(count)
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +34,10 @@ const Home: NextPage = () => {
           <a className={styles.link} >GO TO FIRST POST</a>
         </Link>
 
-        <Button variant='outlined' >
+        <Button
+          variant='outlined'
+          onClick={ () => dispatch(incrementByAmount(4)) }
+        >
           My Frist Button
         </Button>
       </main>
