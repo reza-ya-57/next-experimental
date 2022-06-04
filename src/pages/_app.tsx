@@ -1,10 +1,22 @@
+import '../../styles/globals.css';
 import React from 'react';
 import { ThemeProvider } from '@mui/styles';
 import { CssBaseline } from '@mui/material';
 import theme from '../configs/material/theme';
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import { store } from '../store/index'
+import { store } from '../store/index';
+
+// material rtl
+import rtlPlugin from 'stylis-plugin-rtl';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+
+// Create rtl cache
+const cacheRtl = createCache({
+  key: 'muirtl',
+  stylisPlugins: [rtlPlugin],
+});
 
 function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -20,11 +32,13 @@ function MyApp(props: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <CacheProvider value={cacheRtl} >
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CacheProvider>
       </Provider>
     </>
   );

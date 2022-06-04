@@ -6,7 +6,7 @@ import theme from '../configs/material/theme';
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html dir='rtl' lang="en">
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
