@@ -1,39 +1,34 @@
-// pages/_app.tsx
-
-import * as React from 'react';
-import Head from 'next/head';
+import React from 'react';
+import { ThemeProvider } from '@mui/styles';
+import { CssBaseline } from '@mui/material';
+import theme from '../configs/material/theme';
 import { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../theme';
-import createEmotionCache from '../createEmotionCache';
-
-// redux
 import { Provider } from 'react-redux';
-import { store } from '../app/store';
+import { store } from '../store/index'
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
+function MyApp(props: AppProps) {
+  const { Component, pageProps } = props;
 
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement!.removeChild(jssStyles);
+    }
+  }, []);
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
-    <Provider store={store}>
-      <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
+    </>
   );
 }
+
+//withRedux wrapper that passes the store to the App Component
+export default MyApp;

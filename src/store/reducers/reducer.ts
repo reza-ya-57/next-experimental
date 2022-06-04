@@ -3,7 +3,7 @@ import {
   decrement,
   increment,
   incrementByAmount,
-} from './actions';
+} from '../actions/actions';
 
 type CounterState = {
   value: number;

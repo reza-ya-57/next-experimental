@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
 // Material UI
-import { Button } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 //Redux
 import {
   useAppDispatch,
@@ -13,8 +13,9 @@ import {
   decrement,
   increment,
   incrementByAmount,
-} from '../store/actions';
-import { selectCount } from '../store'
+} from '../store/actions/actions';
+import { selectCount } from '../store/selectors'
+import { fetchUsers } from '../store/slices/users'
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -36,10 +37,63 @@ const Home: NextPage = () => {
 
         <Button
           variant='outlined'
-          onClick={ () => dispatch(incrementByAmount(4)) }
+          onClick={() => dispatch(fetchUsers())}
         >
-          My Frist Button
+          increace number
         </Button>
+        <Button
+          variant='outlined'
+          onClick={() => dispatch(fetchUsers())}
+        >
+          increace number
+        </Button>
+        <Button
+          variant='outlined'
+          onClick={() => dispatch(fetchUsers())}
+        >
+          increace number
+        </Button>
+        <Button
+          variant='outlined'
+          onClick={() => dispatch(fetchUsers())}
+        >
+          increace number
+        </Button>
+        <Button
+          variant='outlined'
+          onClick={() => dispatch(fetchUsers())}
+        >
+          increace number
+        </Button>
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        <TextField
+          variant='outlined'
+          type='text'
+        />
+        {count}
       </main>
     </div>
   )
