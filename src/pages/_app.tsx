@@ -17,16 +17,16 @@ import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset } from '@mui/styles';
 
 
-const jss = create({
-  plugins: [...jssPreset().plugins, rtl()],
-})
-// Create rtl cache
-const cacheRtl = createCache({
-  key: 'muirtl',
-  stylisPlugins: [prefixer, rtlPlugin],
-});
 
 function MyApp(props: AppProps) {
+  const jss = create({
+    plugins: [...jssPreset().plugins, rtl()],
+  })
+  // Create rtl cache
+  const cacheRtl = createCache({
+    key: 'muirtl',
+    stylisPlugins: [prefixer, rtlPlugin],
+  });
   const { Component, pageProps } = props;
 
   React.useEffect(() => {
@@ -42,12 +42,12 @@ function MyApp(props: AppProps) {
       <Provider store={store}>
         <StylesProvider jss={jss}>
           <ThemeProvider theme={theme}>
-            {/* <CacheProvider value={cacheRtl} > */}
+            <CacheProvider value={cacheRtl} >
 
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <Component {...pageProps} />
-            {/* </CacheProvider> */}
+            </CacheProvider>
           </ThemeProvider>
         </StylesProvider>
       </Provider>
