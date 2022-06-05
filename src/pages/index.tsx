@@ -18,6 +18,10 @@ import {
 import { selectCount } from '../store/selectors'
 import { fetchUsers } from '../store/slices/users'
 
+let a = -1;
+++a || ++a || ++a
+console.log(a)
+
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
   const count = useAppSelector(selectCount);
