@@ -44,6 +44,7 @@ const Home: NextPage = () => {
           { jokeWithHadi }
         </Button>
         <br />
+        Hello
         <br />
         <strong>{ state }</strong>
       </main>
