@@ -2,21 +2,30 @@
 
 const withFonts = require('next-fonts');
 
-const nextConfig = {
+
+module.exports = withFonts({
   reactStrictMode: true,
   distDir: "build",
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|woff2)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-        },
-      ],
-    });
-
+  enableSvg: true,
+  webpack(config, options) {
     return config;
-},
-}
+  }
+}); 
+// const nextConfig = {
+//   reactStrictMode: true,
+//   distDir: "build",
+//   webpack: (config, options) => {
+//     config.module.rules.push({
+//       test: /\.(png|jpe?g|gif|woff2)$/i,
+//       use: [
+//         {
+//           loader: 'file-loader',
+//         },
+//       ],
+//     });
 
-module.exports = nextConfig
+//     return config;
+// },
+// }
+
+// module.exports = nextConfig
