@@ -14,7 +14,7 @@ var obj = xlsx.parse(__dirname + '/testexcel.xlsx'); // parses a file
 
 var obj = xlsx.parse(fs.readFileSync(__dirname + '/testexcel.xlsx'));
 console.log(obj[0].data[1][2])
-
+console.log("hello")
 function runService(obj) {
   return new Promise((resolve, reject) => {
     const worker = new Worker('./service.js', { ojb });
@@ -28,9 +28,9 @@ function runService(obj) {
 }
 
 async function run() {
-  const result = await runService('world')
+  const result = await runService(obj)
   console.log(result);
-}
+} 
 
 
 app.prepare()
