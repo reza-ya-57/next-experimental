@@ -7,12 +7,30 @@ const handle = app.getRequestHandler()
 const path = require('path');
 const xlsx = require('node-xlsx');
 const fs = require('fs')
+const { Worker } = require('worker_threads')
 
 
 var obj = xlsx.parse(__dirname + '/testexcel.xlsx'); // parses a file
 
 var obj = xlsx.parse(fs.readFileSync(__dirname + '/testexcel.xlsx'));
-console.log(obj)
+console.log(obj[0].data[1][2])
+
+function runService(obj) {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker('./service.js', { ojb });
+    worker.on('message', resolve);
+    worker.on('error', reject);
+    worker.on('exit', (code) => {
+      if (code !== 0)
+        reject(new Error(`Worker stopped with exit code ${code}`));
+    })
+  })
+}
+
+async function run() {
+  const result = await runService('world')
+  console.log(result);
+}
 
 
 app.prepare()
@@ -21,6 +39,7 @@ app.prepare()
     
   console.log(handle)
   server.get('/test', (req, res) => {
+    res.send(obj[0].data[1][2])
     // const actualPage = '/login'
     // const queryParams = { id: req.params.id } 
     // res.send("I am coming back from node server")
