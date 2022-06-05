@@ -5,7 +5,16 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const path = require('path');
-    
+const xlsx = require('node-xlsx');
+const fs = require('fs')
+
+
+var obj = xlsx.parse(__dirname + '/testexcel.xlsx'); // parses a file
+
+var obj = xlsx.parse(fs.readFileSync(__dirname + '/testexcel.xlsx'));
+console.log(obj)
+
+
 app.prepare()
 .then(() => {
   const server = express()
