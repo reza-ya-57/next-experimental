@@ -11,6 +11,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
+import Head from 'next/head';
 
 
 
@@ -32,15 +33,18 @@ function MyApp(props: AppProps) {
 
   return (
     <>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
+      <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
           <CacheProvider value={cacheRtl} >
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <Component {...pageProps} />
           </CacheProvider>
-        </ThemeProvider>
-      </Provider>
+        </Provider>
+      </ThemeProvider>
     </>
   );
 }
