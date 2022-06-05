@@ -1,7 +1,5 @@
-// src/theme.ts
-
-import { createTheme } from '@mui/material/styles';
-import IranSansFont from "../../../public/fonts/IRANSans.woff2";
+import { createTheme } from "@mui/material/styles";
+import IranSansFont from "../../public/fonts/IRANSans.woff2";
 
 const theme = createTheme({
   direction: "rtl",
