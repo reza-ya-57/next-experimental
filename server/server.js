@@ -4,6 +4,7 @@ const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const path = require('path');
     
 app.prepare()
 .then(() => {
@@ -13,7 +14,8 @@ app.prepare()
   server.get('/test', (req, res) => {
     // const actualPage = '/login'
     // const queryParams = { id: req.params.id } 
-    res.send("I am coming back from node server")
+    // res.send("I am coming back from node server")
+    res.sendFile(path.join(__dirname, '/login.html'));
   //  return app.render(req, res, '/login')
   })
   
