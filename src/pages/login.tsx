@@ -1,7 +1,13 @@
 import type { NextPage } from 'next'
 import { Button, TextField } from '@mui/material'
+import { useState } from 'react'
 
 const Home: NextPage = () => {
+
+    const [form , setForm] = useState({
+        name: '' , 
+        password: ''
+    })
 
   const submitHandler = (e:any) => {
       e.preventDefault()
