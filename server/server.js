@@ -13,7 +13,7 @@ app.prepare()
   server.get('/test', (req, res) => {
     // const actualPage = '/login'
     // const queryParams = { id: req.params.id } 
-    res.send("Hello form node server")
+    res.send("I am coming back from node server")
   //  return app.render(req, res, '/login')
   })
   
