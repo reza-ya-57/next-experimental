@@ -1,12 +1,21 @@
+import { Button } from '@mui/material';
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
+import axios from 'axios';
 //Redux
 import {
   useAppSelector,
 } from '../app/hooks';
 import { selectCount } from '../store/selectors';
+
+const getRequestHandler = () => {
+  axios.get("/test")
+    .then(res => {
+      console.log(res.data)
+    })
+}
 
 const Home: NextPage = () => {
   const count = useAppSelector(selectCount);
@@ -22,6 +31,9 @@ const Home: NextPage = () => {
         <Link href='/posts/first-post' >
           <a className={styles.link} >رفتن به صفحه پست </a>
         </Link>
+        <Button onClick={getRequestHandler} >
+          Sent Get Request
+        </Button>
       </main>
     </div>
   )

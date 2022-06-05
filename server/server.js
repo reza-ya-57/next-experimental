@@ -9,12 +9,12 @@ app.prepare()
 .then(() => {
   const server = express()
     
-  
+  console.log(handle)
   server.get('/test', (req, res) => {
-    const actualPage = '/login'
-    const queryParams = { id: req.params.id } 
+    // const actualPage = '/login'
+    // const queryParams = { id: req.params.id } 
     res.send("Hello form node server")
-    // app.render(req, res, '/login')
+  //  return app.render(req, res, '/login')
   })
   
   server.get('*', (req, res) => {
