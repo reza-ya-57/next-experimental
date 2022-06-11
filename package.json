@@ -27,11 +27,8 @@
     "nan": "^2.16.0",
     "next": "12.1.6",
     "next-fonts": "^1.5.1",
-<<<<<<< HEAD
     "next-redux-wrapper": "^7.0.5",
-=======
     "node-gyp": "^9.0.0",
->>>>>>> 53ace493538fcce5fac4302ef3921fb4ffaa8014
     "node-xlsx": "^0.21.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
