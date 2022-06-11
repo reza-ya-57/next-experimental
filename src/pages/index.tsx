@@ -6,11 +6,6 @@ import styles from '../../styles/Home.module.css'
 import axios from 'axios';
 import { useState } from 'react';
 //Redux
-import {
-  useAppSelector,
-} from '../app/hooks';
-import { selectCount } from '../store/selectors';
-
 
 
 
@@ -27,7 +22,8 @@ const Home: NextPage = () => {
         setJokeWithHadi("Click Harder Hadi")
       })
   }
-  const count = useAppSelector(selectCount);
+
+
   return (
     <div>
       <Head>
