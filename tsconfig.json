@@ -22,6 +22,6 @@
     }
 
   },
-  "include": ["server" ,"next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/upload/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/upload/index.js" , "server/server.ts"],
   "exclude": ["node_modules"]
 }

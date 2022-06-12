@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node server.ts",
+    "dev": "ts-node ./server/server.ts",
     "compile": "node-gyp rebuild",
     "build": "next build",
     "start": "next start",
