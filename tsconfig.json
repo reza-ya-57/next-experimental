@@ -7,15 +7,21 @@
     "noImplicitAny": false,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
+    "module": "commonjs",
+    "outDir": "dist",
     "esModuleInterop": true,
-    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true ,
+    "baseUrl": "/src",
+    "paths": {
+      "@/styles/*":["src/styles/*"] ,
+    }
+
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/upload/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/upload/index.js" , "server/server.ts"],
   "exclude": ["node_modules"]
 }

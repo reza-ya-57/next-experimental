@@ -1,16 +1,16 @@
-import '../../styles/globals.css';
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import theme from '../theme/theme';
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import { store } from '../store/index';
 // material rtl
+
 import rtlPlugin from 'stylis-plugin-rtl';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
+import { wrapper } from '../store/store';
 import Head from 'next/head';
 
 
@@ -37,20 +37,22 @@ function MyApp(props: AppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
-        <Provider store={store}>
           <CacheProvider value={cacheRtl} >
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <Component {...pageProps} />
           </CacheProvider>
-        </Provider>
       </ThemeProvider>
     </>
   );
 }
 
 //withRedux wrapper that passes the store to the App Component
+<<<<<<< HEAD
 export default MyApp;
 
 
 
+=======
+export default wrapper.withRedux(MyApp);
+>>>>>>> 4b594d17aa606d105b4bb2c6c377876f1ea118d6

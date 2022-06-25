@@ -6,11 +6,6 @@ import styles from '../../styles/Home.module.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 //Redux
-import {
-  useAppSelector,
-} from '../app/hooks';
-import { selectCount } from '../store/selectors';
-
 
 
 
@@ -51,6 +46,7 @@ const Home: NextPage = () => {
       })
   }
 
+<<<<<<< HEAD
   const fetchHandler = () => {
     axios.get('http://localhost:3000/api/sql/fetch', { headers: { 'Authorization': 'Bearer ' + token } })
       .then(res => {
@@ -62,6 +58,9 @@ const Home: NextPage = () => {
   }
 
   const count = useAppSelector(selectCount);
+=======
+
+>>>>>>> 4b594d17aa606d105b4bb2c6c377876f1ea118d6
   return (
     <div>
       <Head>
