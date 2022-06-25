@@ -3,6 +3,9 @@ import Link from 'next/link'
 
 
 export default function FirstPost() {
+
+    
+    console.log('Hello from first post')
     return (
         <div className='container' >
             <div>

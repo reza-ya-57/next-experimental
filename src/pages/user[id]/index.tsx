@@ -31,7 +31,6 @@ const BasicBar = (props) => {
     useEffect(() => {
 
     }, [props.options])
-
     return (
         <ReactEcharts
             option={initialOption}

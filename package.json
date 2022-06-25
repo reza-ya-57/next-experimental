@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server/server.js",
+    "dev": "next dev",
     "compile": "node-gyp rebuild",
     "build": "next build",
     "start": "next start",

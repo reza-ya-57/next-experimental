@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 //Redux
 import {
   useAppSelector,
@@ -15,9 +15,32 @@ import { selectCount } from '../store/selectors';
 
 
 const Home: NextPage = () => {
-  
-  const [state , setState] = useState('');
-  const [jokeWithHadi , setJokeWithHadi] = useState("Sent Get Request")
+
+  const [state, setState] = useState('');
+  const [token , setToken] = useState('');
+  const [jokeWithHadi, setJokeWithHadi] = useState("Sent Get Request")
+
+  const requestBody = {
+    email: 'sean.maxwell@gmail.com',
+    password: 'Password@1'
+  }
+
+  const loginHandler = async () => {
+    // debugger
+    axios.post('http://localhost:3000/api/auth/login', requestBody)
+      .then(res => {
+        console.log(res.data)
+        setToken(res.data.token)
+        console.log(res.data.token)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+
+  }
+  useEffect(() => {
+    //  loginHandler(requestBody)
+  }, [])
 
   const getRequestHandler = () => {
     axios.get("/test")
@@ -27,6 +50,17 @@ const Home: NextPage = () => {
         setJokeWithHadi("Click Harder Hadi")
       })
   }
+
+  const fetchHandler = () => {
+    axios.get('http://localhost:3000/api/sql/fetch', { headers: { 'Authorization': 'Bearer ' + token } })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+
   const count = useAppSelector(selectCount);
   return (
     <div>
@@ -36,17 +70,31 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <div className={styles.Lorem}>
+          test
+        </div>
         <h1>سلام </h1>
         <Link href='/posts/first-post' >
           <a className={styles.link} >رفتن به صفحه پست </a>
         </Link>
         <Button variant='contained' onClick={getRequestHandler} >
-          { jokeWithHadi }
+          {jokeWithHadi}
         </Button>
         <br />
         Hello
         <br />
-        <strong>{ state }</strong>
+        <Button
+          variant='contained'
+          onClick={loginHandler}
+        >
+          Login
+        </Button>
+        <Button
+          variant='contained'
+          onClick={fetchHandler}
+        >
+          fetch
+        </Button>
       </main>
     </div>
   )

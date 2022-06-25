@@ -2,6 +2,14 @@
   padding: 0 2rem;
 }
 
+.Lorem {
+  color: black;
+  width: 500px;
+  margin: auto;
+  text-align: end;
+  hyphens: auto;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;

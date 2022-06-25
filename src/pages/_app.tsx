@@ -15,6 +15,7 @@ import Head from 'next/head';
 
 
 
+
 function MyApp(props: AppProps) {
   // Create rtl cache
   const cacheRtl = createCache({
@@ -22,7 +23,6 @@ function MyApp(props: AppProps) {
     stylisPlugins: [prefixer, rtlPlugin],
   });
   const { Component, pageProps } = props;
-
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -51,3 +51,6 @@ function MyApp(props: AppProps) {
 
 //withRedux wrapper that passes the store to the App Component
 export default MyApp;
+
+
+
