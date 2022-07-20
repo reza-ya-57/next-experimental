@@ -48,11 +48,4 @@ function MyApp(props: AppProps) {
 }
 
 //withRedux wrapper that passes the store to the App Component
-<<<<<<< HEAD
-export default MyApp;
-
-
-
-=======
 export default wrapper.withRedux(MyApp);
->>>>>>> 4b594d17aa606d105b4bb2c6c377876f1ea118d6

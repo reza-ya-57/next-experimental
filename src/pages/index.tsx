@@ -13,6 +13,7 @@ const Home: NextPage = () => {
 
   const [state, setState] = useState('');
   const [token , setToken] = useState('');
+  const [excel , setExcel] = useState<any>('');
   const [jokeWithHadi, setJokeWithHadi] = useState("Sent Get Request")
 
   const requestBody = {
@@ -37,6 +38,11 @@ const Home: NextPage = () => {
     //  loginHandler(requestBody)
   }, [])
 
+  const onFileChange = event => {
+        
+    setExcel({ selectedFile: event.target.files[0] });
+};
+
   const getRequestHandler = () => {
     axios.get("/test")
       .then(res => {
@@ -46,7 +52,6 @@ const Home: NextPage = () => {
       })
   }
 
-<<<<<<< HEAD
   const fetchHandler = () => {
     axios.get('http://localhost:3000/api/sql/fetch', { headers: { 'Authorization': 'Bearer ' + token } })
       .then(res => {
@@ -57,10 +62,24 @@ const Home: NextPage = () => {
       })
   }
 
-  const count = useAppSelector(selectCount);
-=======
 
->>>>>>> 4b594d17aa606d105b4bb2c6c377876f1ea118d6
+  const excelHandler = () => {
+    const formData = new FormData();
+
+    formData.append("SampleFile", excel.selectedFile);
+
+    axios.post('http://localhost:3000/api/sql/excel', formData , { headers: { 
+      'Authorization': 'Bearer ' + token ,
+
+    } })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
+  
   return (
     <div>
       <Head>
@@ -94,6 +113,14 @@ const Home: NextPage = () => {
         >
           fetch
         </Button>
+        <input type="file" onChange={onFileChange} accept=".xlsx, .xls, .csv" />
+        <Button
+          variant='contained'
+          onClick={excelHandler}
+        >
+          upload excel
+        </Button>
+        
       </main>
     </div>
   )

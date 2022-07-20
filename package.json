@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "dev": "next dev",
-=======
-    "dev": "ts-node ./server/server.ts",
->>>>>>> 4b594d17aa606d105b4bb2c6c377876f1ea118d6
     "compile": "node-gyp rebuild",
     "build": "next build",
     "start": "next start",

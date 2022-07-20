@@ -10,20 +10,6 @@ const port = process.env.PORT || 3000;
   try {
     await app.prepare();
     const server = express();
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
     // Next route handling
     server.all("*", (req: Request, res: Response) => {
       return handle(req, res);
